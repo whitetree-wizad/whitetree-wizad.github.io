@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>WMwang&#39;s blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="title &#x3D; collection模块之deque()的介绍date &#x3D; 2021&#x2F;12&#x2F;5tag &#x3D; python学习手册   什么是collection模块？collection模块提供了一些python常用的数据类型，为python内置的类型提供补充常用deque,Counter,defaultdict类型  什么是deque? A listlike sequence optimized">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WMwang&#39;s blog">
+<meta property="og:url" content="https://whitetree-wizad.github.io/2021/12/05/python/collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="WMwang&#39;s blog">
+<meta property="og:description" content="title &#x3D; collection模块之deque()的介绍date &#x3D; 2021&#x2F;12&#x2F;5tag &#x3D; python学习手册   什么是collection模块？collection模块提供了一些python常用的数据类型，为python内置的类型提供补充常用deque,Counter,defaultdict类型  什么是deque? A listlike sequence optimized">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://whitetree-wizad.github.io/2021/12/05/python/collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D/images/deque%E6%96%B9%E6%B3%95%E5%9B%BE%E8%A7%A3.png">
+<meta property="article:published_time" content="2021-12-05T00:54:15.924Z">
+<meta property="article:modified_time" content="2021-12-05T02:50:25.809Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://whitetree-wizad.github.io/2021/12/05/python/collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D/images/deque%E6%96%B9%E6%B3%95%E5%9B%BE%E8%A7%A3.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1638672685148">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638672685148">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="John Doe">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>4</div>
+        <div><span>Tags</span>0</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+
+    
+    
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 John Doe
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="" class="lazyload">
+              <h1></h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年12月05日</a>
+    <a><i class="nexmoefont icon-areachart"></i>714 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+</div>
+
+      
+
+      <hr>
+<p>title = collection模块之deque()的介绍<br>date = 2021/12/5<br>tag = python学习手册</p>
+<hr>
+<blockquote>
+<p>什么是collection模块？<br>collection模块提供了一些python常用的数据类型，为python内置的类型提供补充<br>常用deque,Counter,defaultdict类型</p>
+</blockquote>
+<h1 id="什么是deque"><a href="#什么是deque" class="headerlink" title="什么是deque?"></a>什么是deque?</h1><blockquote>
+<p>A listlike sequence optimized for data accesses near its endpoints.</p>
+</blockquote>
+<p>collection.deque 是在python标准库中（据说）最好用的双向队列类型，其他方法有<em>queue.Queue / asyncio.Queue / multiprocessing.Queue</em></p>
+<h2 id="什么是双向队列？"><a href="#什么是双向队列？" class="headerlink" title="什么是双向队列？"></a>什么是双向队列？</h2><blockquote>
+<p>1、双向队列是指一种具有队列和栈的性质的数据结构。<br>2、双向队列中的元素可以从两端弹出，其限定插入和删除操作在表的两端进行。</p>
+</blockquote>
+<p>双向队列就像一个可固定长度的列表，它的长度固定后，在一边添加元素后，会在另一边删除删除元素。</p>
+<h1 id="collection-deque属性介绍"><a href="#collection-deque属性介绍" class="headerlink" title="collection.deque属性介绍"></a>collection.deque属性介绍</h1><h2 id="maxlen"><a href="#maxlen" class="headerlink" title="maxlen"></a>maxlen</h2><blockquote>
+<p>maximum size of a deque or None if unbounded</p>
+</blockquote>
+<p>即想要给该<code>deque()</code>队列设定的最大长度。</p>
+<h1 id="collection-deque类中方法介绍"><a href="#collection-deque类中方法介绍" class="headerlink" title="collection.deque类中方法介绍"></a>collection.deque类中方法介绍</h1><p>先来一场图片<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranzhong/p/12438841.html"><img data-fancybox="gallery" data-sizes="auto" data-src="images/deque%E6%96%B9%E6%B3%95%E5%9B%BE%E8%A7%A3.png" alt="图解deque中方法" class="lazyload"></a></p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">deque</span>(<span class="params">[builtins.<span class="built_in">object</span>]</span>)</span></span><br><span class="line"><span class="class">&gt;<span class="title">deque</span>(<span class="params">[iterable[, maxlen]]</span>) --&gt; deque Object</span></span><br></pre></td></tr></table></figure>
+<p><em>在python3.9 module docs中的定义</em></p>
+</blockquote>
+<p>下面对其类中定义的方法依次介绍：</p>
+<h2 id="append-…"><a href="#append-…" class="headerlink" title="append(…)"></a>append(…)</h2><blockquote>
+<p>Add an element to the right side of the [deque]</p>
+</blockquote>
+<p>在<code>deque()</code>对象右边添加一个元素，类似<code>list</code>类型。</p>
+<h2 id="appendleft-…"><a href="#appendleft-…" class="headerlink" title="appendleft(…)"></a>appendleft(…)</h2><blockquote>
+<p>Add an element to the left side of the [deque]</p>
+</blockquote>
+<p>如上所示，在<code>deque()</code>对象左边添加一个元素。</p>
+<h2 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h2><blockquote>
+<p>Remove all elements from the [deque]</p>
+</blockquote>
+<p>删除这个<code>duque()</code>对象中的所有元素。</p>
+<h2 id="copy-…"><a href="#copy-…" class="headerlink" title="copy(…)"></a>copy(…)</h2><blockquote>
+<p>Return a shallow copy of a [deque]</p>
+</blockquote>
+<p>创建一个deque的 浅拷贝副本（浅拷贝，详见[[python中浅拷贝与深拷贝介绍]]）。</p>
+<h2 id="count-…"><a href="#count-…" class="headerlink" title="count(…)"></a>count(…)</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;D.count(value) -&gt; integer</span><br></pre></td></tr></table></figure>
+<p>return number of occurrences of value</p>
+</blockquote>
+<p>返回<code>deque()</code>对象中元素的个数。</p>
+<h2 id="extend-…"><a href="#extend-…" class="headerlink" title="extend(…)"></a>extend(…)</h2><blockquote>
+<p>Extend the right side of the deque with elements from the iterable</p>
+</blockquote>
+<p>在<code>deque()</code>对象右边连接可迭代元素，类似<code>list</code>类型。</p>
+<h2 id="extendleft-…"><a href="#extendleft-…" class="headerlink" title="extendleft(…)"></a>extendleft(…)</h2><blockquote>
+<p>Extend the left side of the deque with elements from the iterable</p>
+</blockquote>
+<p>在左边 ……</p>
+<h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;D.index(value, [start, [stop]]) -&gt; integer</span><br></pre></td></tr></table></figure>
+<p>return first index of value.<br>Raises ValueError if the value is not present.</p>
+</blockquote>
+<p>在<code>[start,[stop]]</code>中返回所求元素的索引，若该元素不存在，触发<code>ValueError</code>错误。</p>
+<h2 id="insert-…"><a href="#insert-…" class="headerlink" title="insert(…)"></a>insert(…)</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;D.insert(index, <span class="built_in">object</span>) </span><br></pre></td></tr></table></figure>
+<p>  insert object before index</p>
+</blockquote>
+<p>在目标对象的指定索引前添加对象。</p>
+<h2 id="pop-…"><a href="#pop-…" class="headerlink" title="pop(…)"></a>pop(…)</h2><blockquote>
+<p>Remove and return the rightmost element.</p>
+</blockquote>
+<p>弹出并删除该<code>deque()</code>对象最右边的元素。</p>
+<h2 id="popleft-…"><a href="#popleft-…" class="headerlink" title="popleft(…)"></a>popleft(…)</h2><p>还是从左边……</p>
+<h2 id="remove-…"><a href="#remove-…" class="headerlink" title="remove(…)"></a>remove(…)</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;D.remove(value)</span><br></pre></td></tr></table></figure>
+<p>remove first occurrence of value.</p>
+</blockquote>
+<p>删除第一次出现的指定元素（应该是左起？）<br>若没有指定元素，则返回<code>ValueError</code>。</p>
+<h2 id="reverse-…"><a href="#reverse-…" class="headerlink" title="reverse(…)"></a>reverse(…)</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;D.reverse()</span><br></pre></td></tr></table></figure>
+<p>  reverse <em>IN PLACE</em></p>
+</blockquote>
+<p>翻转<code>deque()</code>对象中的元素，返回<code>None</code>。</p>
+<h2 id="retate-n-1-…"><a href="#retate-n-1-…" class="headerlink" title="retate(n=1,…)"></a>retate(n=1,…)</h2><blockquote>
+<p>Rotate the deque n steps to the right (default n=1).  <br>If n is negative, rotates left.</p>
+</blockquote>
+<p>$n &gt; 0$，向左旋转，即将最右边的元素翻到最左边。<br>$n &lt; 0$，向右旋转，即将最左边的元素翻到最右边。<br>$n$为多少，就执行此操作多少次。</p>
+<hr>
+<p>第一次打这么多字，好累啊。。。。。</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>John Doe<br>
+        <strong>Link：</strong><a href="https://whitetree-wizad.github.io/2021/12/05/python/collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="https:&#x2F;&#x2F;whitetree-wizad.github.io&#x2F;2021&#x2F;12&#x2F;05&#x2F;python&#x2F;collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;whitetree-wizad.github.io&#x2F;2021&#x2F;12&#x2F;05&#x2F;python&#x2F;collection%E6%A8%A1%E5%9D%97%E4%B8%ADdeque()%E7%9A%84%E4%BB%8B%E7%BB%8D&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1638672685149"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
